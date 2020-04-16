@@ -4,6 +4,9 @@ from discord.ext.commands import Cog
 
 class Errors(Cog):
 
+    def __init__(self, bot):
+    self.bot = bot
+
     @Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
