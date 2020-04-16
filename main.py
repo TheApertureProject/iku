@@ -23,14 +23,14 @@ bot = commands.Bot(command_prefix='^')
 async def on_ready():
     loaded = len(MODS)
     bot.remove_command('help')
-    for module in modules:
+    for module in MODS:
         try:
             logging.info('Loading %s', module)
             bot.load_extension(f'modules.{module}')
         except Exception as e:
             logging.exception('Failed to load {} : {}'.format(module, e))
     print('Logged in.')
-    print('{}/{} modules loaded'.format(loaded, len(modules)))
+    print('{}/{} modules loaded'.format(loaded, len(MODS)))
     print(f'discord.py lib version : {discord.__version__}')
     bot.loop.create_task(status())
 
