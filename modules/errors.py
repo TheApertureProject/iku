@@ -1,7 +1,7 @@
 import discord
-from discord import commands
+from discord.ext import commands
 
-class Errors(Cog):
+class Errors(commands.Cog):
 
     @Cog.listener()
     async def on_command_error(self, ctx, error):
