@@ -4,6 +4,9 @@ from discord.ext.commands import Cog
 
 class Welcomer(Cog):
 
+    def __init__(self, bot):
+    self.bot = bot
+
     @Cog.listener()
     async def on_member_join(self, member):
         if member.guild.id == 466600971213209600:
