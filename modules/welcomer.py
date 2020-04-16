@@ -24,4 +24,4 @@ class Welcomer(Cog):
             await leave_message.send(f":wheelchair: {member.name} a quitté le serveur.")
 
 def setup(bot):
-    bot.add_cog(Listeners(bot))
+    bot.add_cog(Welcomer(bot))
