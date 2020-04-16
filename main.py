@@ -12,8 +12,8 @@ with open('./config.json', 'r') as cjson:
     config = json.load(cjson)
 
 TOKEN = os.environ["TOKEN"]
-PREFIX = config["prefix"]
-MODS = config["mods"]
+PREFIX = config["PREFIX"]
+MODS = config["MODS"]
 
 # Configuration et connection au bot
 
