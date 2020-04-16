@@ -1,4 +1,4 @@
 {
   "PREFIX" : "^",
-  "MODS" : "welcomer.py", "errors.py"
+  "MODS" : ["welcomer", "errors"]
 }
