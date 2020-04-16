@@ -5,7 +5,7 @@ from discord.ext.commands import Cog
 class Welcomer(Cog):
 
     def __init__(self, bot):
-    self.bot = bot
+        self.bot = bot
 
     @Cog.listener()
     async def on_member_join(self, member):
