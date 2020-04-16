@@ -2,7 +2,7 @@ import json
 import logging
 import os
 import discord
-from discord import Commands
+from discord import commands
 
 # Configuration des pré-requis
 
