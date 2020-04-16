@@ -18,7 +18,7 @@ class Welcomer(Cog):
             await short_message.send(f"Bienvenue, {member.mention} :D")
 
     @Cog.listener()
-    async def on_member_leave(self, member):
+    async def on_member_remove(self, member):
         if member.guild.id == 466600971213209600:
             
             leave_message = self.bot.get_channel(466603496322498561)
