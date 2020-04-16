@@ -1,5 +1,5 @@
 import discord
-from discord import Commands
+from discord import commands
 
 class Welcomer(Cog):
 
