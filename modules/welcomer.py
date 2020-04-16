@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
+from discord.ext.commands import Cog
 
-class Welcomer(commands.Cog):
+class Welcomer(Cog):
 
     @Cog.listener()
     async def on_member_join(self, member):
