@@ -17,7 +17,7 @@ MODS = config["MODS"]
 
 # Configuration et connection au bot
 
-bot = discord.Client(prefix='^')
+bot = commands.Bot(prefix='^')
 
 @bot.event
 async def on_ready():
