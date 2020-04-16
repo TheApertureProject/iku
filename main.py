@@ -32,7 +32,6 @@ async def on_ready():
     print('Logged in.')
     print('{}/{} modules loaded'.format(loaded, len(MODS)))
     print(f'discord.py lib version : {discord.__version__}')
-    bot.loop.create_task(status())
 
 
 bot.run(TOKEN)
