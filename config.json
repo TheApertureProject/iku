@@ -1,0 +1,4 @@
+{
+  "PREFIX" : "^",
+  "MODS" : "welcomer.py", "errors.py"
+}
