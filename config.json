@@ -1,4 +1,4 @@
 {
   "PREFIX" : "^",
-  "MODS" : ["welcomer", "errors"]
+  "MODS" : ["welcomer", "errors", "membercount"]
 }
