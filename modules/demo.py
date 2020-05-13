@@ -7,12 +7,12 @@ class Demo(Cog):
         self.bot = bot
 
     @bot.command()
-    async def ping(ctx):
+    async def ping(self, ctx):
     """Répond 'Ping!'"""
         await ctx.send("Pong!")
     
     @bot.command()
-    async def pong(ctx):
+    async def pong(self, ctx):
     """Répond 'Pong!'"""
         await ctx.send("Ping!")
 
