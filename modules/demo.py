@@ -8,12 +8,12 @@ class Demo(Cog):
 
     @bot.command()
     async def ping(self, ctx):
-    """Répond 'Ping!'"""
+        """Répond 'Ping!'"""
         await ctx.send("Pong!")
     
     @bot.command()
     async def pong(self, ctx):
-    """Répond 'Pong!'"""
+        """Répond 'Pong!'"""
         await ctx.send("Ping!")
 
 def setup(bot):
