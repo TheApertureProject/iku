@@ -19,7 +19,8 @@ class Datacom(Cog):
 
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
         
-        await database.execute("CREATE TABLE data (UserId INT, Balance INT, LastDaily INT, LastWork INT, Level INT)")
+        await database.execute("DROP TABLE data")
+        await database.execute("CREATE TABLE maindata (UserId INT, Balance INT, LastDaily INT, LastWork INT, Level INT)")
 
         UserId = ctx.author.id
         Balance = 1000
