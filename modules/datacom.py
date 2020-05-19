@@ -23,7 +23,7 @@ class Datacom(Cog):
     async def register(self, ctx):
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
         try:
-            botcursor.execute("INSERT INTO data(UserId, Money, Level), VALUES ({}, {}, {})".format(ctx.author.id, 1000, 1))
+            botcursor.execute("INSERT INTO data(UserId, Money, Level), VALUES({}, {}, {})".format(ctx.author.id, 1000, 1))
         except Exception as e:
             print(e)
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
