@@ -16,17 +16,21 @@ class Datacom(Cog):
     @commands.command(aliases=["start"])
     async def register(self, ctx):
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
-        
+
         await database.connect()
-        
+
+        UserId = ctx.author.id
+        Money = 1000
+        Level = 1
+
         try:
-            await database.execute("INSERT INTO data(UserId, Money, Level), VALUES({}, {}, {})".format(ctx.author.id, 1000, 1))
+            await database.execute(f"INSERT INTO data(UserId, Money, Level), VALUES({UserId}, {Money}, {Level})")
         except Exception as e:
             print(e)
-        a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
+        a = f""":white_check_mark: | Votre profil a bien été créé, {UserId}. Voici vos statistiques de départ :
 
-> :heart_decoration: Rang : `1`
-> :credit_card: Crédits : `1000`
+> :heart_decoration: Rang : `{Level}`
+> :credit_card: Crédits : `{Money}`
 
 Affichez à tout moment ces statistiques avec la commande `profil`.
 Pour en savoir plus sur les différentes manières d'obtenir plus de crédits, utilisez la commande `work help`.
