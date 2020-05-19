@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import Cog
+import mysql.connector
 import os
 
 DBU = os.environ["DB_USERNAME"]
@@ -9,7 +10,7 @@ DBN = os.environ["DB_NAME"]
 DBH = os.environ["DB_HOST"]
 DBP = os.environ["DB_PORT"]
 
-conn = mariadb.connect(user=DBU, password=DBM, database=DBN, host=DBH, port=DBP)
+conn = mysql.connector.connect(user=DBU, password=DBM, database=DBN, host=DBH, port=DBP)
 
 botcursor = conn.cursor()
 
