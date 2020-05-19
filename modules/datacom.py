@@ -13,7 +13,8 @@ class Datacom(Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        asyncio.create_task(database.connect())
+        bot.loop.create_task(database.connect())
+
 
     @commands.command(aliases=["start"])
     async def register(self, ctx):
