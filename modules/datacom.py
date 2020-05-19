@@ -26,10 +26,10 @@ class Datacom(Cog):
             botcursor.execute("INSERT INTO data(userid INT, money INT, Level INT), VALUES ({}, {}, {})".format(ctx.author.id, 1000, 1))
         except Exception as e:
             print(e)
-        a = f"""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
+        a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
 > :heart_decoration: Rang : 1
 > :credit_card: Crédits : 1000
-Affichez à tout moment ces statistiques avec la commande `profil`. Amusez-vous bien !""""
+Affichez à tout moment ces statistiques avec la commande `profil`. Amusez-vous bien !"""
         await msg.edit(content=a)
 
 def setup(bot):
