@@ -1,2 +1,3 @@
 discord.py
-mysql-connector
+mariadb
+mysql-connector-python
