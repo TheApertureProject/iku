@@ -32,7 +32,7 @@ class Datacom(Cog):
             await database.execute("INSERT INTO maindata (UserId, Balance, Level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
         except Exception as e:
             print(e)
-        a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.user.mention}. Voici vos statistiques de départ :
+        a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
 
 > :heart_decoration: Rang : `{Level}`
 > :credit_card: Crédits : `{Balance}`
