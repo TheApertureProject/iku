@@ -1,18 +1,13 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import Cog
-import mysql.connector
+from databases import Database
 import os
 
-DBU = os.environ["DB_USERNAME"]
-DBM = os.environ["DB_PASSWORD"]
-DBN = os.environ["DB_NAME"]
-DBH = os.environ["DB_HOST"]
-DBP = os.environ["DB_PORT"]
+sql_connect_url = os.environ["JAWSDB_URL"]
 
-conn = mysql.connector.connect(user=DBU, password=DBM, database=DBN, host=DBH, port=DBP)
-
-botcursor = conn.cursor()
+database = Database(sql_connect_url)
+await database.connect()
 
 class Datacom(Cog):
 
@@ -23,7 +18,7 @@ class Datacom(Cog):
     async def register(self, ctx):
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
         try:
-            botcursor.execute("INSERT INTO data(UserId, Money, Level), VALUES({}, {}, {})".format(ctx.author.id, 1000, 1))
+            database.execute("INSERT INTO data(UserId, Money, Level), VALUES({}, {}, {})".format(ctx.author.id, 1000, 1))
         except Exception as e:
             print(e)
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
