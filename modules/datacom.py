@@ -20,17 +20,17 @@ class Datacom(Cog):
         await database.connect()
 
         UserId = ctx.author.id
-        Money = 1000
+        Balance = 1000
         Level = 1
 
         try:
-            await database.execute("INSERT INTO MainData (UserId, Money, Level) VALUES ({}, {}, {})".format(UserId, Money, Level))
+            await database.execute("INSERT INTO MainData (UserId, Balance, Level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
         except Exception as e:
             print(e)
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.user.mention}. Voici vos statistiques de départ :
 
 > :heart_decoration: Rang : `{Level}`
-> :credit_card: Crédits : `{Money}`
+> :credit_card: Crédits : `{Balance}`
 > :id: ID d'enregistrement : {UserId}
 
 Affichez à tout moment ces statistiques avec la commande `profil`.
