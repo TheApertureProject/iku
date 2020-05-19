@@ -7,7 +7,6 @@ import os
 sql_connect_url = os.environ["JAWSDB_URL"]
 
 database = Database(sql_connect_url)
-await database.connect()
 
 class Datacom(Cog):
 
@@ -17,6 +16,9 @@ class Datacom(Cog):
     @commands.command(aliases=["start"])
     async def register(self, ctx):
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
+        
+        await database.connect()
+        
         try:
             database.execute("INSERT INTO data(UserId, Money, Level), VALUES({}, {}, {})".format(ctx.author.id, 1000, 1))
         except Exception as e:
