@@ -21,15 +21,15 @@ class Datacom(Cog):
 
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
         
-        await database.execute("DROP TABLE data")
-        await database.execute("CREATE TABLE maindata (UserId INT, Balance INT, LastDaily INT, LastWork INT, Level INT)")
+        await database.execute("DROP TABLE maindata")
+        await database.execute("CREATE TABLE maindata (UserId BIGINT, Balance BIGINT, LastDaily INT, LastWork INT, Level INT)")
 
         UserId = ctx.author.id
         Balance = 1000
         Level = 1
 
         try:
-            await database.execute("INSERT INTO MainData (UserId, Balance, Level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
+            await database.execute("INSERT INTO maindata (UserId, Balance, Level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
         except Exception as e:
             print(e)
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.user.mention}. Voici vos statistiques de départ :
