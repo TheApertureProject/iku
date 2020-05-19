@@ -23,13 +23,18 @@ class Datacom(Cog):
     async def register(self, ctx):
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
         try:
-            botcursor.execute("INSERT INTO data(userid INT, money INT, Level INT), VALUES ({}, {}, {})".format(ctx.author.id, 1000, 1))
+            botcursor.execute("INSERT INTO data(UserId, Money, Level), VALUES ({}, {}, {})".format(ctx.author.id, 1000, 1))
         except Exception as e:
             print(e)
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
-> :heart_decoration: Rang : 1
-> :credit_card: Crédits : 1000
-Affichez à tout moment ces statistiques avec la commande `profil`. Amusez-vous bien !"""
+
+> :heart_decoration: Rang : `1`
+> :credit_card: Crédits : `1000`
+
+Affichez à tout moment ces statistiques avec la commande `profil`.
+Pour en savoir plus sur les différentes manières d'obtenir plus de crédits, utilisez la commande `work help`.
+
+Amusez-vous bien ! :heart:"""
         await msg.edit(content=a)
 
 def setup(bot):
