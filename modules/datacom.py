@@ -24,7 +24,7 @@ class Datacom(Cog):
         Level = 1
 
         try:
-            await database.execute(f"INSERT INTO data(UserId, Money, Level), VALUES({UserId}, {Money}, {Level})")
+            await database.execute(f"INSERT INTO data (UserId, Money, Level) VALUES ({}, {}, {})".format(UserId, Money, Level))
         except Exception as e:
             print(e)
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.user.mention}. Voici vos statistiques de départ :
