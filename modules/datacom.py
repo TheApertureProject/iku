@@ -25,4 +25,4 @@ class Datacom(Cog):
         await msg.edit(content=f":white_check_mark | Votre profil a bien été créé, {ctx.author.mention}. Amusez-vous bien :)")
 
 def setup(bot):
-    bot.add_cog(Datacom(bot)
+    bot.add_cog(Datacom(bot))
