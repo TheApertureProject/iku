@@ -22,7 +22,10 @@ class Datacom(Cog):
     @commands.command(aliases=["start"])
     async def register(self, ctx):
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
-        botcursor.execute("INSERT INTO data (userid INT, money INT, Level INT), VALUES (%s, %s, %s)", (ctx.author.id, 1000, 1))
+        try:
+            botcursor.execute("INSERT INTO data (userid INT, money INT, Level INT), VALUES ({}, {}, {})".format(ctx.author.id, 1000, 1))
+        except Exception as e:
+            print(e)
         await msg.edit(content=f":white_check_mark | Votre profil a bien été créé, {ctx.author.mention}. Amusez-vous bien :)")
 
 def setup(bot):
