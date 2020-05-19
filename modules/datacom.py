@@ -15,9 +15,12 @@ class Datacom(Cog):
 
     @commands.command(aliases=["start"])
     async def register(self, ctx):
+
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
 
         await database.connect()
+
+        await database.execute("CREATE TABLE data (UserId INT, Balance INT, LastDaily INT, LastWork INT, Level INT)")
 
         UserId = ctx.author.id
         Balance = 1000
