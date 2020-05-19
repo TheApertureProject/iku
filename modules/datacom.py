@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import Cog
 from databases import Database
 import os
+import asyncio
 
 sql_connect_url = os.environ["JAWSDB_URL"]
 
@@ -12,7 +13,7 @@ class Datacom(Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        await database.connect()
+        asyncio.create_task(database.connect())
 
     @commands.command(aliases=["start"])
     async def register(self, ctx):
