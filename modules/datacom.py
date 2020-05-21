@@ -26,12 +26,9 @@ class Datacom(Cog):
     async def register(self, ctx):
 
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
-        
-        await database.execute("DROP TABLE maindata")
-        await database.execute("CREATE TABLE maindata (UserId BIGINT, Balance BIGINT, LastDaily INT, LastWork INT, Level INT)")
 
         UserId = ctx.author.id
-        Balance = 1000
+        Balance = 0
         Level = 1
 
         try:
