@@ -15,6 +15,11 @@ class Datacom(Cog):
         self.bot = bot
         bot.loop.create_task(database.connect())
 
+    @commands.command(aliases=["start"])
+    async def register(self, ctx):
+        await database.execute("DROP TABLE maindata")
+        await database.execute("CREATE TABLE maindata (user_id BIGINT, balance BIGINT, last_daily INT, last_work INT, level INT)")
+
 
     @commands.command(aliases=["start"])
     async def register(self, ctx):
