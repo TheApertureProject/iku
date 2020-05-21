@@ -2,19 +2,24 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Cog
 from databases import Database
-import os
 import asyncio
-
-sql_connect_url = os.environ["JAWSDB_URL"]
-
-database = Database(sql_connect_url)
+import aiomysql
+import os
 
 class Datacom(Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        bot.loop.create_task(database.connect())
-
+        if not hasattr(bot, "db"):
+            bot.db = await aiomysql.create_pool(
+                host=os.environ["DB_HOST"],
+                port=os.environ["DB_PORT"],
+                user=os.environ["DB_USER"],
+                password=os.environ["DB_PASSWORD"],
+                db=os.environ["DB_NAME"],
+                loop=asyncio.get_event_loop(),
+                autocommit=True
+            )
 
     @commands.command(aliases=["start"])
     async def register(self, ctx):
@@ -23,17 +28,19 @@ class Datacom(Cog):
 
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
 
-        await database.execute("SELECT user_id FROM maindata WHERE user_id={}".format(UserId))
+        async with bot.db.acquire() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute("SELECT user_id FROM maindata WHERE user_id = %s", (user.id))
+                user_id = await cur.fetchone()
 
-        for user_id in database:
-            if user_id == UserId:
-                await msg.edit(content="<:white_cross_mark:713026754763030629> | Votre profil existe déjà.")
-                return
+        if user_id == UserId:
+            await msg.edit(content="<:white_cross_mark:713026754763030629> | Votre profil existe déjà.")
+            return
 
         Balance = 0
         Level = 1
 
-        await database.execute("INSERT INTO maindata (user_id, balance, level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
+        await bot.db.execute("INSERT INTO maindata (user_id, balance, level) VALUES (%s, %s, %s)", (UserId, Balance, Level))
 
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
 
