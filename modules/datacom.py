@@ -19,6 +19,7 @@ class Datacom(Cog):
     async def clear(self, ctx):
         await database.execute("DROP TABLE maindata")
         await database.execute("CREATE TABLE maindata (user_id BIGINT, balance BIGINT, last_daily INT, last_work INT, level INT)")
+        await ctx.send("cleared")
 
 
     @commands.command(aliases=["start"])
@@ -34,7 +35,7 @@ class Datacom(Cog):
         Level = 1
 
         try:
-            await database.execute("INSERT INTO maindata (UserId, Balance, Level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
+            await database.execute("INSERT INTO maindata (user_id, balance, level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
         except Exception as e:
             print(e)
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
