@@ -15,12 +15,6 @@ class Datacom(Cog):
         self.bot = bot
         bot.loop.create_task(database.connect())
 
-    @commands.command()
-    async def clear(self, ctx):
-        await database.execute("DROP TABLE maindata")
-        await database.execute("CREATE TABLE maindata (user_id BIGINT, balance BIGINT, last_daily INT, last_work INT, level INT)")
-        await ctx.send("cleared")
-
 
     @commands.command(aliases=["start"])
     async def register(self, ctx):
@@ -31,9 +25,10 @@ class Datacom(Cog):
 
         await database.execute("SELECT user_id FROM maindata WHERE user_id={}".format(UserId))
 
-        if user_id is UserId:
-            await msg.edit(content="<:white_cross_mark:713026754763030629> | Votre profil existe déjà.")
-            return
+        for user_id in database:
+            if user_id == UserId:
+                await msg.edit(content="<:white_cross_mark:713026754763030629> | Votre profil existe déjà.")
+                return
 
         Balance = 0
         Level = 1
@@ -51,6 +46,7 @@ Pour en savoir plus sur les différentes manières d'obtenir plus de crédits, u
 
 Amusez-vous bien ! :heart:"""
         await msg.edit(content=a)
+
 
 def setup(bot):
     bot.add_cog(Datacom(bot))
