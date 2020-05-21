@@ -25,16 +25,21 @@ class Datacom(Cog):
     @commands.command(aliases=["start"])
     async def register(self, ctx):
 
+        UserId = ctx.author.id
+
         msg = await ctx.send("<a:loading:712211273743597618> | Création de votre profil utilisateur en cours.")
 
-        UserId = ctx.author.id
+        await database.execute("SELECT user_id FROM maindata WHERE user_id={}".format(UserId))
+
+        if user_id is UserId:
+            await msg.edit(content="<:white_cross_mark:713026754763030629> | Votre profil existe déjà.")
+            return
+
         Balance = 0
         Level = 1
 
-        try:
-            await database.execute("INSERT INTO maindata (user_id, balance, level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
-        except Exception as e:
-            print(e)
+        await database.execute("INSERT INTO maindata (user_id, balance, level) VALUES ({}, {}, {})".format(UserId, Balance, Level))
+
         a = f""":white_check_mark: | Votre profil a bien été créé, {ctx.author.mention}. Voici vos statistiques de départ :
 
 > :heart_decoration: Rang : `{Level}`
