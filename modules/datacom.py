@@ -20,7 +20,7 @@ class Datacom(Cog):
         self.db = await aiomysql.create_pool(
             host=os.environ["DB_HOST"],
             port=os.environ["DB_PORT"],
-            user=os.environ["DB_USER"],
+            user=os.environ["DB_USERNAME"],
             password=os.environ["DB_PASSWORD"],
             db=os.environ["DB_NAME"],
             loop=asyncio.get_event_loop(),
