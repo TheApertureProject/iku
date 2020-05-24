@@ -10,15 +10,21 @@ class Datacom(Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        if not hasattr(bot, "db"):
-            bot.db = await aiomysql.create_pool(
-                host=os.environ["DB_HOST"],
-                port=os.environ["DB_PORT"],
-                user=os.environ["DB_USER"],
-                password=os.environ["DB_PASSWORD"],
-                db=os.environ["DB_NAME"],
-                loop=asyncio.get_event_loop(),
-                autocommit=True
+        self.db = None
+        bot.loop.create_task(self.load())
+
+    async def cog_check(self, ctx):
+        return self.db is not None
+
+    async def load(self):
+        self.db = await aiomysql.create_pool(
+            host=os.environ["DB_HOST"],
+            port=os.environ["DB_PORT"],
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASSWORD"],
+            db=os.environ["DB_NAME"],
+            loop=asyncio.get_event_loop(),
+            autocommit=True
             )
 
     @commands.command(aliases=["start"])
@@ -53,7 +59,6 @@ Pour en savoir plus sur les différentes manières d'obtenir plus de crédits, u
 
 Amusez-vous bien ! :heart:"""
         await msg.edit(content=a)
-
 
 def setup(bot):
     bot.add_cog(Datacom(bot))
