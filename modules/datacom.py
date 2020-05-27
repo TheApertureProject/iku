@@ -5,6 +5,7 @@ from databases import Database
 import asyncio
 import aiomysql
 import os
+from os import environ
 
 class Datacom(Cog):
 
