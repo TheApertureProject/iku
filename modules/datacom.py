@@ -18,11 +18,11 @@ class Datacom(Cog):
 
     async def load(self):
         self.db = await aiomysql.create_pool(
-            host=os.environ["DB_HOST"],
-            port=os.environ["DB_PORT"],
-            user=os.environ["DB_USERNAME"],
-            password=os.environ["DB_PASSWORD"],
-            db=os.environ["DB_NAME"],
+            host=environ.get("DB_HOST"),
+            port=environ.get("DB_PORT"),
+            user=environ.get("DB_USERNAME"),
+            password=environ.get("DB_PASSWORD"),
+            db=environ.get("DB_NAME"),
             loop=asyncio.get_event_loop(),
             autocommit=True
             )
