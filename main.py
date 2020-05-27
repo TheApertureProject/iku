@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+from os import environ
 import discord
 from discord.ext import commands
 
