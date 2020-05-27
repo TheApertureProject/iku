@@ -35,4 +35,4 @@ async def on_ready():
     print(f'discord.py lib version : {discord.__version__}')
 
 
-bot.run(TOKEN)
+bot.run(f"{TOKEN}")
