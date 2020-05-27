@@ -11,7 +11,7 @@ logging.basicConfig(level='INFO')
 with open('./config.json', 'r') as cjson:
     config = json.load(cjson)
 
-TOKEN = os.environ["TOKEN"]
+TOKEN = environ.get("TOKEN")
 PREFIX = config["PREFIX"]
 MODS = config["MODS"]
 
