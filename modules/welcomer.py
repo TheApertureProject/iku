@@ -28,6 +28,8 @@ Avant toute chose, je te conseille de te présenter dans le salon <#467021094793
 (cela aidera les autres membres à mieux te connaître !)
 
 Bisous et profite bien de notre serveur !"""
+            
+            await member.send(private_message)
 
     @Cog.listener()
     async def on_member_remove(self, member):
