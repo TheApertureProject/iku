@@ -11,7 +11,7 @@ class Welcomer(Cog):
     async def on_member_join(self, member):
         if member.guild.id == 466600971213209600:
 
-            short_message = aperture_id.get_channel(466600971213209602)
+            short_message = self.bot.get_channel(466600971213209602)
             await short_message.send(f"Bienvenue, {member.mention} :D")
 
             private_message = """Hey !
