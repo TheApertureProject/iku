@@ -15,7 +15,7 @@ class Welcomer(Cog):
             join_message = self.bot.get_channel(466603496322498561)
             
             await short_message.send(f"Bienvenue, {member.mention} :D")
-            await join_message.send(f":arrow_lower_right: {member.idname} a rejoint le serveur.)
+            await join_message.send(f":arrow_lower_right: {member.idname} a rejoint le serveur.")
 
             private_message = """Hey !
 
