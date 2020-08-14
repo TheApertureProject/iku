@@ -15,7 +15,7 @@ class Welcomer(Cog):
             join_message = self.bot.get_channel(466603496322498561)
             
             await short_message.send(f"Bienvenue, {member.mention} :D")
-            await join_message.send(f":arrow_lower_right: {member.idname} a rejoint le serveur.")
+            await join_message.send(f":arrow_lower_right: {member.name}#{member.discriminator} a rejoint le serveur.")
 
             private_message = """Hey !
 
@@ -40,7 +40,7 @@ Bisous et profite bien de notre serveur !"""
         if member.guild.id == 466600971213209600:
 
             leave_message = self.bot.get_channel(466603496322498561)
-            await leave_message.send(f":wheelchair: {member.idname} a quitté le serveur.")
+            await leave_message.send(f":wheelchair: {member.name}#{member.discriminator} a quitté le serveur.")
 
 def setup(bot):
     bot.add_cog(Welcomer(bot))
