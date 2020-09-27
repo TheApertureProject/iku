@@ -21,19 +21,25 @@ class Welcomer(Cog):
 
 Je n'ai pu m'empêcher de remarquer que tu venais de rejoindre **aperture** ! Bienvenue à toi :)
 
-Avant toute chose, je t'invite à te présenter dans le salon <#467021094793117707> — **c'est obligatoire pour accéder au reste du serveur**, et cela aidera les autres membres à mieux te connaître.
+> :information_source: Pour toute demande d'échange de pub ou de partenariat, adressez-vous à un membre du staff.
 
-Utilise ce modèle. Si tu souhaites ne pas préciser certaines infos, mets un tiret à l'endroit voulu :
-```**Nom :**
+Avant toute chose, je t'invite à te présenter. Cela aidera les autres membres à mieux te connaître.
+
+Copie-colle et remplis le modèle ci-dessous dans le salon <#467021094793117707> !
+
+Bisous et profite bien de notre serveur !"""
+
+            presentation = """```Markdown
+**Nom :**
 **Genre :**
 **Année de naissance :**
 **Localisation :**
 **Centres d'intérêts :**
-**Goûts musicaux :**```
-
-Bisous et profite bien de notre serveur !"""
+**Maîtrises artistiques :**
+**Goûts musicaux :**```"""
 
             await member.send(private_message)
+            await member.send(presentation)
 
     @Cog.listener()
     async def on_member_remove(self, member):
