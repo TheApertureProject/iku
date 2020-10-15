@@ -9,7 +9,7 @@ from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.members = True
-intents.guild = True
+intents.guilds = True
 
 # Configuration des pré-requis
 
