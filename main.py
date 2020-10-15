@@ -5,6 +5,12 @@ from os import environ
 import discord
 from discord.ext import commands
 
+# Autorisations des intents
+
+intents = discord.Intents.default()
+intents.members = True
+intents.guild = True
+
 # Configuration des pré-requis
 
 logging.basicConfig(level='INFO')
