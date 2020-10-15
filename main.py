@@ -8,7 +8,7 @@ from discord.ext import commands
 # Autorisations des intents
 
 intents = discord.Intents.default()
-intents.all() = True
+intents.all = True
 
 # Configuration des pré-requis
 
