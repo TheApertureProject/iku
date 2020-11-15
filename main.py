@@ -8,7 +8,7 @@ from discord.ext import commands
 # Autorisations des intents
 
 intents = discord.Intents.default()
-intents.all = True
+intents.members = True
 
 # Configuration des pré-requis
 
@@ -23,7 +23,7 @@ MODS = config["MODS"]
 
 # Configuration et connection au bot
 
-bot = commands.Bot(command_prefix='^')
+bot = commands.Bot(command_prefix='^', intents=intents, shard_id=[0,1])
 
 @bot.event
 async def on_ready():
