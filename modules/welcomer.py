@@ -17,15 +17,11 @@ class Welcomer(Cog):
             await short_message.send(f"Bienvenue, {member.mention} :D")
             await join_message.send(f":arrow_lower_right: {member.name}#{member.discriminator} a rejoint le serveur.")
 
-            private_message = """Hey !
+            private_message = """Hey, bienvenue à toi sur Aperture.
 
-Je n'ai pu m'empêcher de remarquer que tu venais de rejoindre **aperture** ! Bienvenue à toi :)
+Avant toute chose, je t'invite à te présenter — ça  aidera les autres membres à mieux te connaître.
 
-> :information_source: Pour toute demande d'échange de pub ou de partenariat, adressez-vous à un membre du staff.
-
-Avant toute chose, je t'invite à te présenter. Cela aidera les autres membres à mieux te connaître.
-
-Copie-colle et remplis le modèle ci-dessous dans le salon <#467021094793117707> !
+Pour ce faire, copie-colle et remplis le modèle ci-dessous dans le salon <#467021094793117707>.
 
 Bisous et profite bien de notre serveur !"""
 
